@@ -1,0 +1,5 @@
+khi chay fs.append() thi se them content lan luot cho file
+nhung neu chay don le fs.open() thi content bi xoa 
+neu chay ca 2 phuong thuc tac dong den 1 file thi chay may lan cung chi co 1 lan content duoc ghi ra
+ke ca luc thu chay truoc fs.append() nhieu lan thi chi can chay lenh kia se chi cho 1 lan content
+mac du code fs.open() nam sau fs.append() nhung duong nhu node dang chay open truoc append
