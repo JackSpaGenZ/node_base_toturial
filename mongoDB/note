@@ -1,0 +1,46 @@
+username : jackietruong 
+password : dat1234567
+
+link to connect by mongosh ( mongo shell )
+
+    - mongosh "mongodb+srv://cluster0.emwfw.mongodb.net/myFirstDatabase" --apiVersion 1 --username <username>
+    - mongosh "mongodb+srv://cluster0.emwfw.mongodb.net/myFirstDatabase" --apiVersion 1 --username jackietruong
+
+link to connect by vscode 
+
+    - mongodb+srv://<username>:<password>@cluster0.emwfw.mongodb.net/test
+    - mongodb+srv://jackietruong:dat1234567@cluster0.emwfw.mongodb.net/test
+
+    - note: 
+            + install "MongoDB for VS Code" extension on VSCode
+            + Click on "View" and open "Command Palette."
+              Search "MongoDB: Connect" on the Command Palette and click on "Connect with Connection String."
+            + Paste your connection string into the Command Palette.
+            + Click "Create New Playground" in MongoDB for VS Code to get started.
+            
+link to conect by app
+
+    - mongodb+srv://<username>:<password>@cluster0.emwfw.mongodb.net/?retryWrites=true&w=majority
+    - mongodb+srv://jackietruong:dat1234567@cluster0.emwfw.mongodb.net/?retryWrites=true&w=majority
+
+    - script : 
+                const { MongoClient, ServerApiVersion } = require('mongodb');
+                const uri = "mongodb+srv://<username>:<password>@cluster0.emwfw.mongodb.net/?retryWrites=true&w=majority";
+                const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+                client.connect(err => {
+                  const collection = client.db("test").collection("devices");
+                  // perform actions on the collection object
+                  client.close();
+                });
+
+
+// Learn mongoDB 
+
+Features of MongoDB :
+  - Indexing
+  - Replication
+  - Ad-hoc Queries
+  - Schemaless
+  - Sharding
+  
+   
