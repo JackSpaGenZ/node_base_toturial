@@ -11,33 +11,6 @@ async function main() {
     try {
         await client.connect();
         await listDatabases(client);
-        // await createListing(client, {
-        //     name: "VietNam",
-        //     National: "Viet Nam",
-        //     say: "Xin Chao",
-        //     react: "Friendly"
-        // })
-        // await createMutipleListings(client, [
-        //     {
-        //         name: "VietNam",
-        //         nation: "Viet Nam",
-        //         say: "chao nhe",
-        //         react: "friendly"
-        //     },
-        //     {
-        //         name: "NgheAn",
-        //         nation: "Nghe An, Viet Nam",
-        //         say: "chao bay hay",
-        //         react: "cute"
-        //     },
-        //     {
-        //         name: "DatChao",
-        //         nation: "Dat Style, Viet Nam",
-        //         say: "Bai bai hay",
-        //         react: "yolo"
-        //     }
-        // ]);
-        await findOneListingByName(client, 'VietNam');
         await findListings(client, {
             minimumNumberOfBedrooms: 3,
             minimumNumberOfBathroms: 4,
@@ -62,27 +35,6 @@ async function listDatabases(client) {
     databasesList.databases.forEach(db => {
         console.log(`-${db.name}`);
     });
-}
-
-async function createListing(client, newListing) {
-    const result = await client.db("hello").collection("vn").insertOne(newListing);
-    console.log(`New Listing with id : ${result.insertedId}`);
-}
-
-async function createMutipleListings(client, newListings) {
-    const result = await client.db("bye").collection("vn").insertMany(newListings);
-    console.log(`${result.insertedCount} new listings created with the following id(s):`);
-    console.log(result.insertedIds);
-}
-
-async function findOneListingByName(client, nameOfListing) {
-    const result = await client.db("bye").collection("vn").findOne({ name: nameOfListing });
-    if (result) {
-        console.log(`Collection Founded with name : '${nameOfListing}'`);
-        console.log(result);
-    } else {
-        console.log(`no collection founded with name : ${nameOfListing}`);
-    }
 }
 
 async function findListings(client, {

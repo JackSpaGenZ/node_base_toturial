@@ -1,0 +1,19 @@
+some function of CRUD mongoDB for NodeJS
+
+Create : 
+            - insertOne(newListing)   // insert One Listing 
+            - insertMany(newListings) // insert Many Listings 
+
+Read : 
+            - listDatabases()         // show List Database
+            - findOne({name : nameOfListing}) // find one list by name
+
+Update :
+
+Delete :
+
+
+//----------------------- 
+
+async and await 
+
