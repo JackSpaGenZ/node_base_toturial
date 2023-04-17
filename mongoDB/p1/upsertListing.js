@@ -10,10 +10,13 @@ async function main() {
     MongoDB client is properly closed after the database operations are completed. */
   try {
     await client.connect();
-
     await listDatabases(client);
-
-    await findOneListingByName(client, "Japan"); // insert client and VietNam is name of Listing
+    await upsertListingByName(client, "Japan", {
+      name: "Japan",
+      said: "konnichiwa",
+      handle: "true",
+      hug: "yes",
+    });
   } catch (e) {
     console.error(e);
   } finally {
@@ -33,16 +36,24 @@ async function listDatabases(client) {
   });
 }
 
-async function findOneListingByName(client, nameOfListing) {
+async function upsertListingByName(client, nameOfListing, updatedListing) {
   const result = await client
     .db("hello")
     .collection("vn")
-    .findOne({ name: nameOfListing });
-  // using condition to notificate found or not found with name was inserted
-  if (result) {
-    console.log(`Collection Founded with name : '${nameOfListing}'`);
-    console.log(result);
+    .updateOne(
+      { name: nameOfListing },
+      { $set: updatedListing },
+      { upsert: true }
+    );
+  console.log(
+    `${result.matchedCount} document (s) matched the query criteria `
+  );
+
+  if (result.upsertedCount > 0) {
+    console.log(
+      `One document was updated with Listing Id : ${result.upsertedId}`
+    );
   } else {
-    console.log(`no collection founded with name : ${nameOfListing}`);
+    console.log(`${result.modifiedCount} document (s) was/were updated`);
   }
 }
