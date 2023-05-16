@@ -1,0 +1,13 @@
+we will learn how to use : 
+                            $ match
+                            $ group
+                            $ sort
+                            $ limit
+and : 
+        $ count
+        $ geoNear
+        $ graphLookup
+        $ project
+        $ unwind
+
+        

@@ -1,0 +1,9 @@
+note for ACID Transaction:
+
+    - ACID:
+            + Atomicity
+            + Consistency
+            + Isolation
+            + Durability
+
+    - 
